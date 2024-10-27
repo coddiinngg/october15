@@ -1,75 +1,75 @@
-body{
-  margin: 0px;
-  background-image: url(images/15-Presentation-Background-Examples33.png);
+body {
+  margin: 0;
   background-repeat: no-repeat;
   background-size: cover;
+  background-image: url(https://img.freepik.com/premium-photo/old-newspaper-background-vintage-grey-grunge-paper-texture-blank-textured-pattern-with-space-text_839035-1841126.jpg);
 }
-.container{
-  border: 4px solid lightgray;
-  background-color: white;
+
+.container {
+  background-color: lightgrey;
   height: 100vh;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
-.header{
-  border-bottom: 4px solid lightgray;
+
+.search-box {
+  border-bottom: 3px solid darkgrey;
 }
-.add-box{
-  margin-bottom: 1em;
+
+.search-box div {
+  font-size: 2em;
 }
-#task-section{
-  border-bottom: 4px solid lightgray;
+
+#task-separation {
   display: flex;
-  position: relative;
+  border-bottom: 3px solid darkgrey;
 }
-#task-section > div:nth-child(n+2):nth-child(-n+4) {
-  padding: 1em;
+
+#task-separation div {
+  padding: 0 1em;
 }
-#task-section div:hover{
-  cursor: pointer;
-  background-color: lightblue;
-  border-radius: 45%;
-}
-#task{
-  border-bottom: 4px solid lightgray;
-}
-.task-content{
+
+.task-flex {
   display: flex;
   justify-content: space-between;
-  margin: 0px 1em;
+  padding: 1em 0;
+  border-bottom: 1px solid darkgray;
 }
-.task-content div{
-  margin: 1em;
-}
-.task-complete{
+
+.complete {
   text-decoration: line-through;
-  background-color: lightgray;
-}
-.task-width{
-  width:60%;
-  word-break: break-all;
-}
-/* #slide-line{
-  background-color: lightskyblue;
-  height: 4px;
-  width: 50px;
-  position: absolute;
-  left: 0px;
-  top: 50px;
-  padding: 0px 10px;
-} */
-
-/* 노트북 & 테블릿 가로 (해상도 1024px ~ 1279px)*/ 
-@media all and (min-width:1024px) and (max-width:1279px) { 
-} 
-
-/* 테블릿 가로 (해상도 768px ~ 1023px)*/ 
-@media all and (min-width:768px) and (max-width:1023px) { 
+  background-color: lightgreen;
 }
 
-/* 모바일 가로 & 테블릿 세로 (해상도 480px ~ 767px)*/ 
-@media all and (min-width:480px) and (max-width:767px) {
-} 
+#task-separation div:hover {
+  cursor: pointer;
+}
 
-/* 모바일 세로 (해상도 ~ 479px) */ 
-@media all and (max-width:479px) {
+.background {
+  background-color: lightcyan;
+  border-radius: 45%;
+  box-shadow: 1 1 1 1;
+}
+
+
+@media (max-width: 425px) {
+  .task-flex {
+    flex-direction: column;  
+    align-items: flex-start;  
+  }
+
+  .task-flex div {
+    margin-bottom: 5px; 
+  }
+
+  #task-input {
+    width: 100%;  
+  }
+
+  #add-task {
+    width: 100%;
+  }
+
+  .search-box {
+    font-size: 1.5em; 
+  }
 }

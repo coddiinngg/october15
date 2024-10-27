@@ -1,125 +1,105 @@
-//input에 내용을 받는다.
-//+를 눌러 내용을 task로 보낸다.
-//check를 누르면 삭선&회색 으로 됐다는 표시를 한다.
-//delete를 누르면 삭제되게 한다.
-//section에 따라 변하게한다.
-//input에 글씨가 없으면 button을 비활성화 시킨다.
-
-let addInput = document.getElementById("add-input");
-let addButton = document.getElementById("add-button");
-let taskSection = document.querySelectorAll("#task-section div");
-let slideLine = document.getElementById("slide-line");
-let filterList = [];
+let taskInput = document.getElementById("task-input");
+let addTask = document.getElementById("add-task");
+let taskSeparation = document.querySelectorAll("#task-separation div");
 let taskList = [];
-let selection = "all";
+let someList = taskList;
+let sectionChoose = "All";
+let taskContent = "";
 
-const task = document.getElementById("task");
+let buttonSection = (event) => {
+  sectionChoose = event.target.textContent;
+  someList = [];
 
-addButton.addEventListener("click", pushTask);
+  taskSeparation.forEach((item) => {
+    item.classList.remove("background");
+  });
 
-addInput.addEventListener("input", eraser);
-addInput.addEventListener("keydown", function (event) {
-  if (event.key === "Enter" && addInput.value.trim() != "") {
-    pushTask();
+  event.target.classList.add("background");
+
+  if (sectionChoose === "All") {
+    render();
+  } else if (sectionChoose === "Doing") {
+    taskList.forEach((task) => {
+      if (!task.isComplete) {
+        someList.push(task);
+      }
+    });
+  } else if (sectionChoose === "Done") {
+    taskList.forEach((task) => {
+      if (task.isComplete) {
+        someList.push(task);
+      }
+    });
   }
+
+  render();
+};
+
+taskSeparation.forEach((item) => {
+  item.addEventListener("click", buttonSection);
 });
 
-function eraser() {
-  if (addInput.value.trim() != "") {
-    addButton.disabled = false;
-  } else {
-    addButton.disabled = true;
-  }
-}
-
-for (let i = 1; i < taskSection.length; i++) {
-  taskSection[i].addEventListener("click", section);
-}
-
-function pushTask() {
+let taskPush = () => {
+  if (taskInput.value.trim() === "") return;
   taskContent = {
-    value: addInput.value,
-    IsComplete: false,
-    id: randomId(),
+    value: taskInput.value,
+    id: randomID(),
+    isComplete: false,
   };
   taskList.push(taskContent);
-  console.log(taskList);
+  taskInput.value = "";
   render();
-  addInput.value = "";
-  addButton.disabled = true;
-}
+};
 
-function render() {
-  let list = [];
-  if (selection === "all") {
-    list = taskList;
-  } else if (selection === "done" || selection === "doing") {
-    list = filterList;
+addTask.addEventListener("click", taskPush);
+
+let render = () => {
+  let List = [];
+  if (sectionChoose === "All") {
+    List = taskList;
+  } else {
+    List = someList;
   }
+
   let result = "";
-  for (let i = 0; i < list.length; i++) {
-    if (list[i].IsComplete === false) {
-      result += `<div class="task-content">
-      <div class="task-width">${list[i].value}</div>
-      <div div class="check-button">
-        <button onclick="taskComplete ('${list[i].id}')"><i class="fa-solid fa-check"></i></button>
-        <button onclick="taskDelete ('${list[i].id}')"><i class="fa-solid fa-trash"></i></button>
-      </div>
+  List.forEach((items) => {
+    result += `
+      <div class="task-flex">
+        <div class="${items.isComplete ? "complete" : ""}">${items.value}</div>
+        <div>
+          <button onclick="taskComplete('${items.id}')">check</button>
+          <button onclick="taskDelete('${items.id}')">delete</button>
+        </div>
       </div>`;
-    } else if (list[i].IsComplete === true) {
-      result += `<div class="task-content">
-      <div class="task-complete task-width">${list[i].value}</div>
-      <div class="check-button">
-        <button onclick="taskComplete ('${list[i].id}')"><i class="fa-solid fa-check"></i></button>
-        <button onclick="taskDelete ('${list[i].id}')"><i class="fa-solid fa-trash"></i></button>
-      </div>
-      </div>`;
-    }
-  }
-  task.innerHTML = result;
-}
+  });
+  document.getElementById("task").innerHTML = result;
+};
 
-function taskComplete(event) {
-  for (let i = 0; i < taskList.length; i++) {
-    if (event === taskList[i].id) {
-      taskList[i].IsComplete = !taskList[i].IsComplete;
+let taskComplete = (event) => {
+  taskList.forEach((items) => {
+    if (event === items.id) {
+      items.isComplete = !items.isComplete;
     }
-  }
+  });
   render();
-}
+};
 
-function taskDelete(event) {
-  for (let i = 0; i < taskList.length; i++) {
-    if (event === taskList[i].id) {
-      taskList.splice(i, 1);
+let taskDelete = (event) => {
+  taskList.forEach((items, index) => {
+    if (event === items.id) {
+      taskList.splice(index, 1);
     }
-  }
+  });
+  someList.forEach((items, index) => {
+    if (event === items.id) {
+      someList.splice(index, 1);
+    }
+  });
   render();
-  console.log(taskList);
-}
+};
 
-function section(event) {
-  selection = event.target.id;
-  filterList = [];
-  if (selection === "all") {
-    render();
-  } else if (selection === "done") {
-    for (i = 0; i < taskList.length; i++) {
-      if (taskList[i].IsComplete === true) {
-        filterList.push(taskList[i]);
-      }
-    }
-    render();
-  } else if (selection === "doing") {
-    for (i = 0; i < taskList.length; i++) {
-      if (taskList[i].IsComplete === false) {
-        filterList.push(taskList[i]);
-      }
-    }
-    render();
-  }
-}
-
-function randomId() {
+let randomID = () => {
   return "_" + Math.random().toString(36).substr(2, 9);
-}
+};
+
+render();
