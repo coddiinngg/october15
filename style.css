@@ -1,75 +1,195 @@
-body {
-  margin: 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url(https://img.freepik.com/premium-photo/old-newspaper-background-vintage-grey-grunge-paper-texture-blank-textured-pattern-with-space-text_839035-1841126.jpg);
-}
-
-.container {
-  background-color: lightgrey;
-  height: 100vh;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-
-.search-box {
-  border-bottom: 3px solid darkgrey;
-}
-
-.search-box div {
-  font-size: 2em;
-}
-
-#task-separation {
-  display: flex;
-  border-bottom: 3px solid darkgrey;
-}
-
-#task-separation div {
-  padding: 0 1em;
-}
-
-.task-flex {
-  display: flex;
-  justify-content: space-between;
-  padding: 1em 0;
-  border-bottom: 1px solid darkgray;
-}
-
-.complete {
-  text-decoration: line-through;
-  background-color: lightgreen;
-}
-
-#task-separation div:hover {
-  cursor: pointer;
-}
-
-.background {
-  background-color: lightcyan;
-  border-radius: 45%;
-  box-shadow: 1 1 1 1;
-}
-
-
-@media (max-width: 425px) {
-  .task-flex {
-    flex-direction: column;  
-    align-items: flex-start;  
+  body {
+    margin: 0;
+    color: gold;
+    background-color: #17517e;
   }
 
-  .task-flex div {
-    margin-bottom: 5px; 
+  .container {
+    margin-top: 1em;
+    border-radius: 4%;
+    border: 3px solid gold;
   }
 
-  #task-input {
-    width: 100%;  
+  .title {
+    font-weight: bold;
+    font-family: "Times New Roman", serif;
+    display: flex;
+    justify-content: space-between;
   }
 
-  #add-task {
+  .title-name {
+    font-size: 3.5em;
+  }
+
+  .search {
+    font-size: 1.7em;
+    padding-top: 1.5em;
+  }
+
+  .search i {
+    padding-left: 0.7em;
+  }
+
+  #menus {
+    color: white;
+    display: flex;
+    justify-content: center;
+    border-top: 2px double gold;
+    border-bottom: 2px double gold;
+    flex-wrap: wrap;
+  }
+
+  #menus:hover {
+    cursor: pointer;
+  }
+
+  #menus div {
+    font-size: 1.1em;
+    padding: 0.6em;
+  }
+
+  .movie-board {
+    margin-top: 1em;
+  }
+
+  .movies img {
+    width: 250px;
+  }
+
+  .genre-name {
+    text-align: center;
+  }
+
+  .movie-slide {
+    height: 80%;
+  }
+
+  .movie-slide h2 {
+    text-align: center;
+  }
+
+  .movies h2 {
+    text-align: center;
+  }
+
+  #movies-board {
+    text-align: center;
+  }
+
+  #movies-board img {
+    width: 180px;
+  }
+
+  h4 {
+    color: white;
+  }
+
+  .col-md-6 img {
+    width: 230px;
+  }
+
+  .movies-data {
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    top: -30px;
+    text-align: center;
+    text-decoration-line: underline;
+  }
+
+  .movies-data:hover {
+    cursor: pointer;
+  }
+
+  h2 {
+    font-weight: 700;
+    color: rgb(236, 229, 229);
+    margin-bottom: 0.5em;
+  }
+
+  .pagination {
+    justify-content: center;
+  }
+
+  .movie-month {
+    color: rgb(236, 229, 229);
+    background-color: #17517e;
+    width: 1.5em;
+  }
+
+  .movie-day {
+    color: rgb(236, 229, 229);
+    background-color: #17517e;
+    width: 0.9em;
+  }
+
+  .movie-year {
+    color: rgb(236, 229, 229);
+    background-color: #17517e;
+    width: 2.5em;
+  }
+
+  .movies-search:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 992px) {
+    .container {
+      height: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #menus {
+      display: none;
+    }
+
+    .search {
+      display: none;
+    }
+
+    .title {
+      justify-content: center;
+      font-size: 0.7em;
+    }
+
+  }
+
+  @media (max-width: 320px) {
+    .title {
+      justify-content: center;
+      font-size: 0.5em;
+    }
+  }
+
+  .modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
   }
 
-  .search-box {
-    font-size: 1.5em; 
+  .modal-content {
+    background-color: #17517e;
+    padding: 20px;
+    border: 2px solid gold;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 800px;
   }
-}
+
+  .close {
+    cursor: pointer;
+    float: right;
+    font-size: 20px;
+  }
+
+  .movie-details {
+    display: flex;
+  }
