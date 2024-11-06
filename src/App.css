@@ -1,0 +1,24 @@
+.box{
+  text-align: center;
+  border: 1px solid black;
+  width: 600px;
+  height: 600px;
+  margin: 1em;
+}
+.container{
+  display: flex;
+  justify-content: center;
+}
+.img-class{
+  width: 300px;
+  height: 300px;
+}
+.win{
+  border: 8px double green;
+}
+.tie{
+  border: 8px double black;
+}
+.lose{
+  border: 8px double red;
+}
