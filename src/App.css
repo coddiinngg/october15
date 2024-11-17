@@ -1,0 +1,159 @@
+.navbar{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.navbar-burger{
+  visibility: hidden;
+  position: absolute;
+  left: 0px;
+  cursor: pointer;
+}
+.navbar-search{
+  position: absolute;
+  left: 20px;
+  cursor: pointer;
+}
+.navbar-search-input{
+  visibility: hidden;
+  transition: all 0.2s linear;
+  border: none;
+  border-bottom: 1px solid black;
+  transform: scale(0);
+  margin-left: 5px;
+}
+.visible{
+  visibility: visible;
+  transition: all 0.2s ease;
+  transform:scale(1);
+}
+.navbar-login{
+  display: flex;
+  position: absolute;
+  right: 20px;
+}
+.navbar-login div{
+  cursor: pointer;
+}
+.navbar-login .navbar-login-img{
+  margin-top: 2px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.navbar-logo img{ 
+  align-items: center;
+  cursor: pointer;
+}
+.navbar-menus{
+  margin-top: 10px;
+}
+.navbar-menus ul{
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+.navbar-menus li{
+  cursor: pointer;
+  margin: 0 20px;
+  font-weight: 700;
+}
+.product-card{
+  transition: all 0.2s linear;
+  background-color: white;
+}
+.product-card:hover{
+  transform: scale(1.07);
+}
+.product-card img{
+  width: 100%;
+}
+.product-detail-img{
+  width: 100%;
+}
+.product-detail-menu *{
+  margin: 20px 0;
+}
+.product-detail-menu h3 button{
+  width: 20vw;
+}
+.Login-page{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.Login-page h1{
+  margin-bottom: 20px;
+}
+.Login-page input{
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 10px 0px;
+  margin-left: 3px;
+  width: 300px;
+}
+.Login-page button{
+  margin-top: 5px;
+  background-color: rgba(0, 0, 0, 0.637);
+  border: none  ;
+  color: #fff;
+  border-radius: 50px;
+  width: 200px;
+  height: 40px;
+}
+.main-box{
+  position: absolute;
+  transition: all 0.3s linear;
+  background-color:rgb(202, 128, 128);
+  height: 100vh;
+  width: 300px;
+  z-index: 1;
+  left: -300px;
+}
+.sub-box{
+  width: 100%;
+  color: white;
+}
+.sub-box h1{
+  text-align: center;
+  font-weight: 700;
+  margin: 40px 0;
+}
+.sub-box h3{
+  position: absolute;
+  top: 3px;
+  right: 8px;
+  color: rgba(0, 0, 0, 0.623);
+  cursor: pointer;
+}
+.sub-box ul{
+  list-style:square
+}
+.sub-box li{
+  margin-left: 10px;
+  padding: 15px 0;
+  font-size: 20px;
+  transition: all 0.2s linear;
+  font-weight: 500;
+  cursor: pointer;
+}
+.sub-box li:hover{
+  transform-origin: left;
+  transform: scale(1.2);
+}
+.main-box-visible{
+  left: 0px;
+}
+@media (max-width: 767px){
+  .navbar-menus{
+    display: none;
+  }
+  .navbar-logo{
+    margin-bottom: 25px;
+  }
+  .navbar-burger{
+    visibility: visible;
+  }
+}
+  
